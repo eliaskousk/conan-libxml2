@@ -1,10 +1,8 @@
-
-
 # conan-libxml2
 
 [Conan.io](https://conan.io) package for libxml2 library
 
-The packages generated with this **conanfile** can be found in [conan.io](https://conan.io/source/libxml2/2.9.3/lasote/stable).
+The packages generated with this **conanfile** can be found in [conan.io](https://conan.io/source/libxml2/2.9.4/eliaskousk/stable).
 
 ## Build packages
 
@@ -14,20 +12,20 @@ Download conan client from [Conan.io](https://conan.io) and run:
     
 ## Upload packages to server
 
-    $ conan upload libxml2/2.9.3@lasote/stable --all
+    $ conan upload libxml2/2.9.4@eliaskousk/stable --all
     
 ## Reuse the packages
 
 ### Basic setup
 
-    $ conan install libxml2/2.9.3@lasote/stable
+    $ conan install libxml2/2.9.4@eliaskousk/stable
     
 ### Project setup
 
 If you handle multiple dependencies in your project is better to add a *conanfile.txt*
     
     [requires]
-    libxml2/2.9.3@lasote/stable
+    libxml2/2.9.4@eliaskousk/stable
 
     [options]
     libxml2:shared=true # false

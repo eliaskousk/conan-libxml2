@@ -3,8 +3,8 @@ from conans import CMake, ConfigureEnvironment
 import os
 
 ############### CONFIGURE THESE VALUES ##################
-default_user = "lasote"
-default_channel = "testing"
+default_user = "eliaskousk"
+default_channel = "stable"
 #########################################################
 
 channel = os.getenv("CONAN_CHANNEL", default_channel)
@@ -16,7 +16,7 @@ class DefaultNameConan(ConanFile):
     version = "0.1"
     settings = "os", "compiler", "arch", "build_type"
     generators = "cmake"
-    requires = "libxml2/2.9.3@%s/%s" % (username, channel)
+    requires = "libxml2/2.9.4@%s/%s" % (username, channel)
 
     def config(self):
         del self.settings.compiler.libcxx
@@ -29,6 +29,6 @@ class DefaultNameConan(ConanFile):
     def imports(self):
         self.copy(pattern="*.dll", dst="bin", src="bin")
         self.copy(pattern="*.dylib", dst="bin", src="lib")
-        
+
     def test(self):
         self.run("cd bin && .%sexample --help" % os.sep)
