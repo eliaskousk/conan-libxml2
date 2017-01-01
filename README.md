@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/eliaskousk/conan-libxml2.svg?branch=release/2.9.4)](https://travis-ci.org/eliaskousk/conan-libxml2)
+
 # conan-libxml2
 
 [Conan.io](https://conan.io) package for libxml2 library
