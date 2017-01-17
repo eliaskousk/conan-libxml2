@@ -15,7 +15,10 @@ class LibxmlConan(ConanFile):
     default_options = "shared=False"
     exports = ["CMakeLists.txt", "FindLibXml2.cmake"]
     url = "http://github.com/lasote/conan-libxml2"
-    requires = "zlib/1.2.9@lasote/stable", "libiconv/1.14@eliaskousk/stable"
+
+    def config_options(self):
+        self.requires.add("zlib/1.2.9@lasote/stable", private=False)
+        self.options["zlib"].shared = self.options.shared
 
     def source(self):
         zip_name = "libxml2-%s.tar.gz" % self.version
