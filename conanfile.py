@@ -14,11 +14,14 @@ class LibxmlConan(ConanFile):
     options = {"shared": [True, False]}
     default_options = "shared=False"
     exports = ["CMakeLists.txt", "FindLibXml2.cmake"]
-    url = "http://github.com/lasote/conan-libxml2"
+    url = "http://github.com/eliaskousk/conan-libxml2"
 
     def config_options(self):
-        self.requires.add("zlib/1.2.9@lasote/stable", private=False)
+        self.requires("zlib/1.2.9@lasote/stable")
         self.options["zlib"].shared = self.options.shared
+
+        self.requires("libiconv/1.14@eliaskousk/stable")
+        self.options["libiconv"].shared = self.options.shared
 
     def source(self):
         zip_name = "libxml2-%s.tar.gz" % self.version
