@@ -17,23 +17,22 @@ class LibxmlConan(ConanFile):
     url = "http://github.com/eliaskousk/conan-libxml2"
 
     def config_options(self):
+        del self.settings.compiler.libcxx
+
         self.requires("zlib/1.2.9@lasote/stable")
         self.options["zlib"].shared = self.options.shared
 
         self.requires("libiconv/1.14@eliaskousk/stable")
         self.options["libiconv"].shared = self.options.shared
 
+        if self.settings.os == "Windows":
+            self.options.shared = True # Static in win doesn't work, runtime errors
+
     def source(self):
         zip_name = "libxml2-%s.tar.gz" % self.version
         download("http://xmlsoft.org/sources/%s" % zip_name, zip_name)
         unzip(zip_name)
         os.unlink(zip_name)
-
-    def config_options(self):
-        del self.settings.compiler.libcxx
-        if self.settings.os == "Windows":
-            self.options.shared = True # Static in win doesn't work, runtime errors
-        # self.options["zlib"].shared = True
 
     def build(self):
         if self.settings.os == "Windows":
