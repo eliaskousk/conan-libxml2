@@ -19,7 +19,7 @@ class LibxmlConan(ConanFile):
     def config_options(self):
         del self.settings.compiler.libcxx
 
-        self.requires("zlib/1.2.9@lasote/stable")
+        self.requires("zlib/1.2.11@lasote/stable")
         self.options["zlib"].shared = self.options.shared
 
         self.requires("libiconv/1.14@eliaskousk/stable")
